@@ -58,6 +58,14 @@ class TicTacToe
 
                 Console.Clear();
                 board.PrintBoard();
+
+                if (board.CheckForWin())
+                {
+                    Console.WriteLine("Bot won!");
+                    gameOver = true;
+                    break;
+                }
+                
             }
             else
             {
