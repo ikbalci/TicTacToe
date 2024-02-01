@@ -24,8 +24,28 @@ class TicTacToe
                 break;
             }
 
-            Console.WriteLine("Enter your move (1-9):");
-            int playerMove = int.Parse(Console.ReadLine());
+            int playerMove;
+            do
+            {
+                Console.WriteLine("Enter your move (1-9):");
+
+                if (int.TryParse(Console.ReadLine(), out playerMove))
+                {
+                    if (board.IsMoveValid(playerMove))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid move. Try again.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
+            } while (true);
+
 
             if (board.IsMoveValid(playerMove))
             {
@@ -65,7 +85,7 @@ class TicTacToe
                     gameOver = true;
                     break;
                 }
-                
+
             }
             else
             {
